@@ -9,6 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="FitTrack">
 <title>FitTrack</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 /* ═══════════════ THEME TOKENS ═══════════════ */
 :root{
@@ -131,6 +132,14 @@ body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;dis
 .pill-martial  {background:rgba(167,139,250,.12);color:var(--acc4);border:1px solid rgba(167,139,250,.3)}
 .pill-optional {background:rgba(255,140,66,.1);color:#ff8c42;border:1px solid rgba(255,140,66,.3)}
 .pill-rest     {background:rgba(90,90,114,.1);color:var(--muted);border:1px solid var(--border)}
+.pill-yoga     {background:rgba(192,132,252,.15);color:#c084fc;border:1px solid rgba(192,132,252,.3)}
+.pill-pilates  {background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.3)}
+.pill-dance    {background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.3)}
+.pill-swim     {background:rgba(34,211,238,.12);color:#22d3ee;border:1px solid rgba(34,211,238,.3)}
+.pill-crossfit {background:rgba(251,146,60,.12);color:#fb923c;border:1px solid rgba(251,146,60,.3)}
+.pill-boxing   {background:rgba(248,113,113,.12);color:#f87171;border:1px solid rgba(248,113,113,.3)}
+.pill-stretch  {background:rgba(52,211,153,.12);color:#34d399;border:1px solid rgba(52,211,153,.3)}
+.pill-hiit     {background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
 .dth-info h3{font-size:13px;font-weight:700}
 .dth-info p{font-size:10px;color:var(--sub)}
 .dth-r{display:flex;align-items:center;gap:7px}
@@ -354,15 +363,25 @@ body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;dis
           <div class="oc-title">Створити</div>
           <div class="oc-sub">Налаштуй через форму в додатку</div>
         </div>
+        <div class="onboard-card" onclick="loadDemo('yoga')">
+          <div class="oc-icon">🧘</div>
+          <div class="oc-title">Демо: Йога</div>
+          <div class="oc-sub">Йога + пілатес + розтяжка</div>
+        </div>
+        <div class="onboard-card" onclick="loadDemo('crossfit')">
+          <div class="oc-icon">🔥</div>
+          <div class="oc-title">Демо: Кросфіт</div>
+          <div class="oc-sub">WOD + HIIT + силові</div>
+        </div>
         <div class="onboard-card" onclick="loadDemo('dmytro')">
           <div class="oc-icon">🥋</div>
           <div class="oc-title">Демо: Дзюдо</div>
-          <div class="oc-sub">Силові + єдиноборства</div>
+          <div class="oc-sub">Єдиноборства + силові</div>
         </div>
         <div class="onboard-card" onclick="loadDemo('runner')">
           <div class="oc-icon">🏃</div>
-          <div class="oc-title">Демо: Кардіо</div>
-          <div class="oc-sub">Біг + базові вправи</div>
+          <div class="oc-title">Демо: Біг</div>
+          <div class="oc-sub">Кардіо + базові вправи</div>
         </div>
       </div>
 
@@ -682,8 +701,127 @@ const DEMOS = {
       {id:'snack',name:'Перекус',time:'16:00',kcal:300,protein:15,carbs:40,fat:8,example:'Йогурт + горіхи'},
       {id:'dinner',name:'Вечеря',time:'19:30',kcal:700,protein:25,carbs:80,fat:22,example:'Паста + соус + салат'}
     ]
+  },
+  yoga: {
+    meta:{name:'Олена',goal:'Гнучкість і гармонія',bodyweight:57,height:165,kcalGoal:1700,proteinGoal:80,carbsGoal:185,fatGoal:55,theme:'dark-purple'},
+    schedule:[
+      {day:1,name:'Понеділок',short:'Пн',type:'yoga',label:'Хатха-йога',icon:'🧘',exercises:[
+        {name:"Сур'я Намаскар (привітання сонця)",target:'5 кіл',sets:5,rest:0},
+        {name:'Воїн I + Воїн II',target:'3×45с кожна поза',sets:3,rest:30},
+        {name:'Трикутник (Trikonasana)',target:'3×60с кожен бік',sets:3,rest:20},
+        {name:'Шавасана',target:'10 хв',sets:1,rest:0}
+      ]},
+      {day:2,name:'Вівторок',short:'Вт',type:'pilates',label:'Пілатес',icon:'🤸',exercises:[
+        {name:'Сотня (The Hundred)',target:'3×10 дихань',sets:3,rest:30},
+        {name:'Перекати (Rolling Like a Ball)',target:'3×12',sets:3,rest:20},
+        {name:'Кола ногою (Leg Circles)',target:'3×10 кожна нога',sets:3,rest:20},
+        {name:'Підйом ніг лежачи',target:'3×15',sets:3,rest:30}
+      ]},
+      {day:3,name:'Середа',short:'Ср',type:'stretch',label:'Розтяжка',icon:'🙆',exercises:[
+        {name:'Шпагат — підготовка',target:'3×90с кожен бік',sets:3,rest:30},
+        {name:'Кіт-Корова (Cat-Cow)',target:'3×15 повторень',sets:3,rest:20},
+        {name:'Голуб (Pigeon Pose)',target:'3×90с кожен бік',sets:3,rest:30}
+      ]},
+      {day:4,name:'Четвер',short:'Чт',type:'rest',label:'Відпочинок',icon:'😴',exercises:[]},
+      {day:5,name:"П'ятниця",short:'Пт',type:'yoga',label:'Силова йога',icon:'🔥',exercises:[
+        {name:'Стілець (Utkatasana)',target:'4×45с',sets:4,rest:30},
+        {name:'Бойова поза III (Warrior III)',target:'3×30с кожна нога',sets:3,rest:30},
+        {name:'Планка на передпліччях',target:'3×45с',sets:3,rest:30},
+        {name:'Міст (Setu Bandha)',target:'3×12',sets:3,rest:30}
+      ]},
+      {day:6,name:'Субота',short:'Сб',type:'pilates',label:'Пілатес + Кор',icon:'🤸',exercises:[
+        {name:'Скручування (Corkscrew)',target:'3×10 кожен бік',sets:3,rest:20},
+        {name:'Підйом тазу (Pelvic Curl)',target:'3×15',sets:3,rest:30},
+        {name:'Боковий підйом ніг',target:'3×15 кожна нога',sets:3,rest:20},
+        {name:'Плавання (Swimming)',target:'3×30с',sets:3,rest:20}
+      ]},
+      {day:0,name:'Неділя',short:'Нд',type:'rest',label:'Медитація та відновлення',icon:'🌸',exercises:[]}
+    ],
+    meals:[
+      {id:'breakfast',name:'Сніданок',time:'08:00',kcal:380,protein:18,carbs:48,fat:12,example:'Смузі + горіхова паста + ягоди'},
+      {id:'lunch',name:'Обід',time:'13:00',kcal:520,protein:28,carbs:58,fat:17,example:'Квіноа + запечена курка + овочі'},
+      {id:'snack',name:'Перекус',time:'16:00',kcal:220,protein:10,carbs:26,fat:8,example:'Фрукти + мигдаль (20г)'},
+      {id:'dinner',name:'Вечеря',time:'19:30',kcal:580,protein:24,carbs:53,fat:18,example:'Лосось + броколі + гречка'}
+    ]
+  },
+  crossfit: {
+    meta:{name:'Кросфіт',goal:'Сила і витривалість',bodyweight:75,height:178,kcalGoal:2800,proteinGoal:145,carbsGoal:310,fatGoal:75,theme:'dark-orange'},
+    schedule:[
+      {day:1,name:'Понеділок',short:'Пн',type:'crossfit',label:'WOD: EMOM 10',icon:'🔥',exercises:[
+        {name:'Бербі',target:'10 повт/хв',sets:10,rest:0},
+        {name:'Повітряні присідання',target:'15 повт/хв',sets:10,rest:0},
+        {name:'Підтягування',target:'5 повт/хв',sets:10,rest:0}
+      ]},
+      {day:2,name:'Вівторок',short:'Вт',type:'strength',label:'Силовий день',icon:'💪',exercises:[
+        {name:'Присідання зі штангою',target:'5×5',sets:5,rest:180},
+        {name:'Жим лежачи',target:'5×5',sets:5,rest:180},
+        {name:'Станова тяга',target:'3×3',sets:3,rest:240}
+      ]},
+      {day:3,name:'Середа',short:'Ср',type:'hiit',label:'HIIT',icon:'⚡',exercises:[
+        {name:'Інтервальний біг 30/30',target:'10 раундів',sets:10,rest:30},
+        {name:'Гірський альпініст',target:'3×30с',sets:3,rest:30},
+        {name:'Стрибки на ящик',target:'3×10',sets:3,rest:60}
+      ]},
+      {day:4,name:'Четвер',short:'Чт',type:'rest',label:'Відпочинок',icon:'😴',exercises:[]},
+      {day:5,name:"П'ятниця",short:'Пт',type:'crossfit',label:'WOD: AMRAP 20',icon:'🔥',exercises:[
+        {name:'Поштовх гантелей 2×20кг',target:'AMRAP 20 хв',sets:1,rest:0},
+        {name:'Бічні стрибки через конус',target:'AMRAP 20 хв',sets:1,rest:0},
+        {name:'Тяга гантелей стоячи',target:'AMRAP 20 хв',sets:1,rest:0}
+      ]},
+      {day:6,name:'Субота',short:'Сб',type:'cardio',label:'Відновне кардіо',icon:'🏃',exercises:[
+        {name:'Спокійний біг або велосипед',target:'35–45 хв',sets:1,rest:0}
+      ]},
+      {day:0,name:'Неділя',short:'Нд',type:'rest',label:'Відновлення',icon:'🔋',exercises:[]}
+    ],
+    meals:[
+      {id:'breakfast',name:'Сніданок',time:'07:00',kcal:680,protein:38,carbs:82,fat:18,example:'Яйця (4шт) + вівсянка + банан'},
+      {id:'lunch',name:'Обід',time:'12:30',kcal:850,protein:55,carbs:92,fat:22,example:'Яловичина + рис + броколі'},
+      {id:'pre',name:'Перед тренуванням',time:'15:30',kcal:380,protein:18,carbs:52,fat:8,example:'Сир + банан або протеїновий батончик'},
+      {id:'dinner',name:'Вечеря',time:'19:00',kcal:890,protein:34,carbs:84,fat:27,example:'Лосось + картопля + салат'}
+    ]
   }
 };
+
+// ═══════════════════════════════════════════════
+// TELEGRAM MINI APP
+// ═══════════════════════════════════════════════
+
+const TG = window.Telegram?.WebApp;
+const IS_TG = !!(TG && TG.initData && TG.initData.length > 0);
+
+// ↓ Встав URL свого бекенду на Render.com після деплою
+const API_URL = 'https://fittrack-api.onrender.com';
+
+if (IS_TG) {
+  TG.ready();
+  TG.expand();
+  TG.setHeaderColor?.('#0a0a0c');
+  TG.setBackgroundColor?.('#0a0a0c');
+}
+
+async function _cloudGet() {
+  if (!IS_TG) return false;
+  try {
+    const r = await fetch(`${API_URL}/data`, {
+      headers: {'X-Init-Data': TG.initData}
+    });
+    if (!r.ok) return false;
+    const data = await r.json();
+    Object.entries(data).forEach(([k, v]) => {
+      try { localStorage.setItem(k, JSON.stringify(v)); } catch(e) {}
+    });
+    return true;
+  } catch(e) { return false; }
+}
+
+function _cloudSet(key, value) {
+  if (!IS_TG) return;
+  fetch(`${API_URL}/sync`, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','X-Init-Data': TG.initData},
+    body: JSON.stringify({key, data: value})
+  }).catch(() => {});
+}
 
 // ═══════════════════════════════════════════════
 // STATE
@@ -701,7 +839,7 @@ const DAY_NAMES=['Пн','Вт','Ср','Чт','Пт','Сб','Нд'];
 
 const todayKey=()=>new Date().toISOString().slice(0,10);
 function gs(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
-function ss(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function ss(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){} _cloudSet(k,v);}
 const getSets=()=>gs('sets_'+todayKey(),{});
 const saveSets=s=>ss('sets_'+todayKey(),s);
 const getMeals_=()=>gs('meals_'+todayKey(),{});
@@ -719,15 +857,30 @@ const saveOverrides=o=>ss('ft_overrides',o);
 // BOOT
 // ═══════════════════════════════════════════════
 
-function init(){
-  // try to restore saved config
+async function init(){
+  // In Telegram: show user name in header right away
+  if (IS_TG && TG.initDataUnsafe?.user) {
+    const u = TG.initDataUnsafe.user;
+    document.getElementById('appUser').innerHTML =
+      `<strong>${u.first_name}${u.last_name?' '+u.last_name:''}</strong>via Telegram`;
+  }
+
+  // Always render cached data first (instant UX)
   const saved = gs('ft_config', null);
-  if(saved){
+  if (saved) {
     applyConfig(saved, false);
   } else {
-    // show onboarding
     showPage('onboard');
     hideNav();
+  }
+
+  // In Telegram: sync from cloud in background, re-apply if config changed
+  if (IS_TG) {
+    const ok = await _cloudGet();
+    if (ok) {
+      const newSaved = gs('ft_config', null);
+      if (newSaved) applyConfig(newSaved, false);
+    }
   }
 }
 
@@ -884,8 +1037,16 @@ function renderWzSchedule(){
         <select class="dcr-type-select" id="wz-dt-${d.day}" onchange="wzTypeChange(${d.day})">
           <option value="strength">💪 Силове</option>
           <option value="cardio">🏃 Кардіо</option>
+          <option value="hiit">⚡ HIIT</option>
+          <option value="crossfit">🔥 Кросфіт</option>
           <option value="martial">🥋 Єдиноборства</option>
-          <option value="optional">⚡ Опціональне</option>
+          <option value="boxing">🥊 Бокс</option>
+          <option value="yoga">🧘 Йога</option>
+          <option value="pilates">🤸 Пілатес</option>
+          <option value="dance">💃 Танці</option>
+          <option value="swim">🏊 Плавання</option>
+          <option value="stretch">🙆 Розтяжка</option>
+          <option value="optional">🌀 Опціональне</option>
           <option value="rest" ${d.day===4||d.day===0?'selected':''}>😴 Відпочинок</option>
         </select>
         <input class="dcr-icon-input" id="wz-di-${d.day}" value="${d.day===4||d.day===0?'😴':'💪'}">
@@ -904,7 +1065,7 @@ function wzTypeChange(day){
     document.getElementById(`wz-dl-${day}`).value = 'Відпочинок';
     document.getElementById(`wz-di-${day}`).value = '😴';
   } else {
-    const icons = {strength:'💪',cardio:'🏃',martial:'🥋',optional:'⚡'};
+    const icons = {strength:'💪',cardio:'🏃',martial:'🥋',optional:'🌀',hiit:'⚡',crossfit:'🔥',boxing:'🥊',yoga:'🧘',pilates:'🤸',dance:'💃',swim:'🏊',stretch:'🙆'};
     document.getElementById(`wz-di-${day}`).value = icons[type]||'💪';
   }
 }
@@ -1472,8 +1633,7 @@ function showToast(msg,type=''){
 // BOOT
 // ═══════════════════════════════════════════════
 
-init();
-const ns=getNotif();if(ns.m||ns.f||ns.e) schedNotifications(ns);
+init().then(()=>{const ns=getNotif();if(ns.m||ns.f||ns.e) schedNotifications(ns);});
 </script>
 </body>
 </html>

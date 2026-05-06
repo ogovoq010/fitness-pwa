@@ -1,0 +1,28 @@
+services:
+  # ── FastAPI Backend ──────────────────────────────────────────────────────
+  - type: web
+    name: fittrack-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: BOT_TOKEN
+        sync: false          # вкажеш вручну в Render dashboard
+      - key: FIREBASE_KEY_JSON
+        sync: false          # вкажеш вручну в Render dashboard
+      - key: ALLOWED_ORIGIN
+        sync: false          # напр. https://yourusername.github.io
+
+  # ── Telegram Bot ────────────────────────────────────────────────────────
+  - type: worker
+    name: fittrack-bot
+    runtime: python
+    rootDir: bot
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false          # той самий токен що і у бекенду
+      - key: MINI_APP_URL
+        sync: false          # напр. https://yourusername.github.io/fitness-pwa/
