@@ -1,0 +1,54 @@
+{
+  "_comment": "FitTrack universal config template. Fill in your data and load into the app.",
+
+  "meta": {
+    "name": "Ваше ім'я",
+    "goal": "Ваша ціль (набір маси / схуднення / витривалість / підтримка форми)",
+    "bodyweight": 70,
+    "height": 175,
+    "kcalGoal": 2500,
+    "proteinGoal": 120,
+    "carbsGoal": 280,
+    "fatGoal": 70,
+    "theme": "dark-lime"
+  },
+
+  "_themes": ["dark-lime", "dark-orange", "dark-blue", "dark-purple", "dark-red"],
+
+  "schedule": [
+    {
+      "day": 1,
+      "name": "Понеділок",
+      "short": "Пн",
+      "type": "strength",
+      "_typeOptions": ["strength", "cardio", "martial", "optional", "rest"],
+      "label": "Назва тренування",
+      "icon": "💪",
+      "exercises": [
+        {
+          "name": "Назва вправи",
+          "target": "3×10",
+          "sets": 3,
+          "rest": 90,
+          "_restComment": "Відпочинок у секундах. 0 = без таймера"
+        }
+      ]
+    },
+    { "day": 2, "name": "Вівторок",  "short": "Вт", "type": "rest",     "label": "Відпочинок", "icon": "😴", "exercises": [] },
+    { "day": 3, "name": "Середа",    "short": "Ср", "type": "cardio",   "label": "Кардіо",     "icon": "🏃", "exercises": [
+      { "name": "Біг", "target": "30 хв", "sets": 1, "rest": 0 }
+    ]},
+    { "day": 4, "name": "Четвер",    "short": "Чт", "type": "rest",     "label": "Відпочинок", "icon": "😴", "exercises": [] },
+    { "day": 5, "name": "П'ятниця",  "short": "Пт", "type": "strength", "label": "Силове",     "icon": "🏋️", "exercises": [
+      { "name": "Назва вправи", "target": "4×12", "sets": 4, "rest": 60 }
+    ]},
+    { "day": 6, "name": "Субота",    "short": "Сб", "type": "optional", "label": "Активний відпочинок", "icon": "⚡", "exercises": [] },
+    { "day": 0, "name": "Неділя",    "short": "Нд", "type": "rest",     "label": "Відновлення","icon": "🔋", "exercises": [] }
+  ],
+
+  "meals": [
+    { "id": "meal1", "name": "Сніданок",  "time": "08:00", "kcal": 600, "protein": 30, "carbs": 70, "fat": 15, "example": "Що їси" },
+    { "id": "meal2", "name": "Обід",      "time": "13:00", "kcal": 700, "protein": 40, "carbs": 80, "fat": 20, "example": "Що їси" },
+    { "id": "meal3", "name": "Вечеря",    "time": "19:00", "kcal": 500, "protein": 35, "carbs": 50, "fat": 15, "example": "Що їси" }
+  ]
+}
