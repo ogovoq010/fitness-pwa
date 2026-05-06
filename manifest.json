@@ -1,0 +1,14 @@
+{
+  "name": "FitTrack — Дмитро",
+  "short_name": "FitTrack",
+  "description": "Персональний трекер тренувань та харчування",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "https://fakeimg.pl/192x192/0a0a0c/c8ff00?text=FT&font=bebas", "sizes": "192x192", "type": "image/png" },
+    { "src": "https://fakeimg.pl/512x512/0a0a0c/c8ff00?text=FT&font=bebas", "sizes": "512x512", "type": "image/png" }
+  ]
+}
